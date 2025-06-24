@@ -1,95 +1,94 @@
-🔊 Sound-Based Cellar Light Control (Clap Switch Light)
-An Arduino-based smart automation project that turns a light ON/OFF based on sound (like claps). Ideal for cellars, basements, or any room where switch access is limited or hands-free control is desired.
+# 🔊 Clap-Controlled Light (Sound-Based Cellar Light Automation)
 
-📌 Project Overview
-This project uses a sound sensor module (KY-038 or LM393), an Arduino, and a relay module to detect claps or loud sounds and toggle a light. Each valid clap (or sharp sound) triggers a toggle action – switching the light ON if it was OFF, and vice versa.
+This project uses an Arduino, a sound sensor, and a relay to toggle a light ON or OFF with a clap or sharp sound. It’s perfect for hands-free control in areas like cellars, basements, or dark rooms.
 
-🎯 Features
-✅ Toggle light using clap or any sharp sound
+---
 
-✅ Hands-free operation – great for dark or hard-to-reach places
+## 📦 Project Description
 
-✅ Simple hardware with minimal cost
+The system listens for sound spikes (like a clap) and toggles a light each time it detects a valid signal. It uses an Arduino-compatible board and a digital sound sensor (like KY-038 or LM393) to detect claps and trigger a relay, which switches the light ON or OFF.
 
-✅ Can be adapted for real-world AC light control
+---
 
-✅ Easily modifiable for double-clap or timer features
+## 🧰 Components Required
 
-🧰 Components Required
-Component	Quantity
-Arduino Uno / Nano	1
-Sound Sensor (KY-038 / LM393)	1
-5V Relay Module	1
-Bulb + Holder (AC)	1
-Jumper Wires	~10
-Breadboard (optional)	1
-USB Cable for Arduino	1
+| Component                      | Quantity |
+|-------------------------------|----------|
+| Arduino Uno / Nano            | 1        |
+| Sound Sensor Module (KY-038 or LM393) | 1        |
+| 5V Relay Module               | 1        |
+| Light Bulb + Holder (AC)      | 1        |
+| Jumper Wires                  | ~10      |
+| Breadboard (optional)         | 1        |
+| USB Cable for Arduino         | 1        |
 
-🔌 Circuit Connections
-Sound Sensor Pin	Connects to Arduino
-VCC	5V
-GND	GND
-OUT (Digital)	D2
+---
 
-Relay Pin	Connects to Arduino
-IN	D3
-VCC	5V
-GND	GND
+## 🔌 Wiring Instructions
 
-💡 Note: Use proper safety precautions while connecting AC bulbs.
+### Sound Sensor → Arduino:
+- **VCC** → 5V  
+- **GND** → GND  
+- **OUT (Digital)** → D2  
 
-💻 Code
-The Arduino sketch toggles the relay state every time a rising edge (clap/sound) is detected from the sound sensor.
+### Relay Module → Arduino:
+- **IN** → D3  
+- **VCC** → 5V  
+- **GND** → GND  
 
-📁 Click here to view the code
+> ⚠️ Make sure to use an opto-isolated relay when dealing with 230V AC light bulbs. Keep AC wiring separate and well insulated.
 
-cpp
-Copy
-Edit
-#define SOUND_SENSOR_PIN 2
-#define RELAY_PIN 3
+---
 
-bool lightState = false;
-bool previousSoundState = LOW;
+## 💡 How It Works
 
-void setup() {
-  pinMode(SOUND_SENSOR_PIN, INPUT);
-  pinMode(RELAY_PIN, OUTPUT);
-  digitalWrite(RELAY_PIN, LOW);  // Light initially OFF
-  Serial.begin(9600);
-}
+1. The sound sensor detects a sharp sound (like a clap).
+2. The Arduino reads the sensor’s digital output.
+3. On detecting a rising signal (sound spike), the system toggles the state of the relay.
+4. The relay switches the light ON if it was OFF, or OFF if it was ON.
 
-void loop() {
-  bool soundDetected = digitalRead(SOUND_SENSOR_PIN);
+---
 
-  if (soundDetected == HIGH && previousSoundState == LOW) {
-    lightState = !lightState;
-    digitalWrite(RELAY_PIN, lightState ? HIGH : LOW);
-    Serial.println(lightState ? "Light ON" : "Light OFF");
-    delay(200); // Debounce
-  }
+## 🚀 Getting Started
 
-  previousSoundState = soundDetected;
-}
-📸 Images / Demo Video
-(Add pictures or a YouTube demo link here if available)
+1. Wire the components as per the wiring section.
+2. Open the `.ino` file in the Arduino IDE.
+3. Select the correct board (e.g., Arduino Uno/Nano) and port.
+4. Upload the code to the Arduino.
+5. Power the circuit and test by clapping near the sensor.
 
-⚠️ Safety Notes
-If using an AC bulb with relay, ensure proper insulation.
+---
 
-Never touch relay terminals while powered.
+## 🎯 Use Cases
 
-Use optically isolated relays for better safety.
+- Cellar or basement lighting
+- Night-time room automation
+- Elderly assistance systems
+- Low-cost smart home installations
 
-📦 Future Improvements
-➕ Add double-clap logic for toggle
+---
 
-⏲️ Auto-off after fixed time
+## ⚠️ Safety Tips
 
-📱 Control via Bluetooth or Wi-Fi
+- If you’re switching AC appliances, handle with extreme care.
+- Do not touch the relay terminals when powered.
+- Use a 2-pin plug and proper casing to cover exposed connections.
 
-🌡️ Add temperature or light sensors for adaptive lighting
+---
 
-📄 License
-This project is open-source under the MIT License. Feel free to use, modify, and share it with credit.
+## 📈 Future Enhancements
 
+- Double-clap or triple-clap pattern detection
+- Auto-off after a timer
+- Wireless (Bluetooth/Wi-Fi) override control
+- Integration with ambient light sensors for smarter activation
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License – feel free to modify and use it in your own projects.
+
+---
+
+### 👨‍🔧 Created with ❤️ by [YourNameHere]
