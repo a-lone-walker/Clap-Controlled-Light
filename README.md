@@ -18,8 +18,7 @@ The system listens for sound spikes (like a clap) and toggles a light each time 
 | Sound Sensor Module (KY-038 or LM393) | 1        |
 | 5V Relay Module               | 1        |
 | Light Bulb + Holder (AC)      | 1        |
-| Jumper Wires                  | ~10      |
-| Breadboard (optional)         | 1        |
+| Jumper Wires (M to F)         | ~10      |
 | USB Cable for Arduino         | 1        |
 
 ---
@@ -52,7 +51,7 @@ The system listens for sound spikes (like a clap) and toggles a light each time 
 ## 🚀 Getting Started
 
 1. Wire the components as per the wiring section.
-2. Open the `.ino` file in the Arduino IDE.
+2. Open the `code.ino` file in the Arduino IDE.
 3. Select the correct board (e.g., Arduino Uno/Nano) and port.
 4. Upload the code to the Arduino.
 5. Power the circuit and test by clapping near the sensor.
@@ -91,4 +90,4 @@ This project is licensed under the MIT License – feel free to modify and use i
 
 ---
 
-### 👨‍🔧 Created with ❤️ by [YourNameHere]
+### 👨‍🔧 Created with ❤️ by [Ashok]
